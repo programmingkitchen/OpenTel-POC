@@ -11,6 +11,17 @@ git remote add origin git@github.com:programmingkitchen/OpenTel-POC.git
 git push -u origin main
 
 
+git config --global user.email "programmingkitchen@gmail.com"
+git config --global user.name "PK VM #1"
+git config --global user.name "PK VM #2"
+
+
+
+
+git clone git@github.com:programmingkitchen/OpenTel-POC.git
+
+
+
 $ cat config
 Host 10.*
         StrictHostKeyChecking no
