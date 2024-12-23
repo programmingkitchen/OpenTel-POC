@@ -2,7 +2,7 @@
 
 ## Git Hub Repo
 
-# Test from VM #1 
+# Test from VM #2 
 echo "# OpenTel-POC" >> README.md
 git init
 git add README.md
