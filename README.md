@@ -1,4 +1,7 @@
-# Open Telemetry POC
+# OPEN TELEMETRY POC
+
+
+# NON-AUTOMOTED STUFF
 
 ## Git Hub Repo
 
@@ -14,6 +17,7 @@ git push -u origin main
 git config --global user.email "programmingkitchen@gmail.com"
 git config --global user.name "PK VM #1"
 git config --global user.name "PK VM #2"
+git config --global user.name "PK VM #3"
 
 git clone git@github.com:programmingkitchen/OpenTel-POC.git
 
@@ -28,4 +32,72 @@ Host github.com
   user git
 ```
 
+## /etc/hosts file
 
+10.111.2.5 front
+10.111.2.4 back
+10.111.2.6 store 
+
+## User Account Configuration 
+ 
+ - Docker
+
+ubuntu@OpenTel-vm-02:~$ grep docker /etc/group
+docker:x:998:ubuntu
+
+- For other users like "elk"
+
+ubuntu@OpenTel-vm-02:~$ grep elk /etc/passwd
+elk:x:1001:1001:Elk,,,:/home/elk:/bin/bash
+
+ubuntu@OpenTel-vm-02:~$ grep elk /etc/group
+sudo:x:27:ubuntu,elk
+elk:x:1001:
+
+### Sudo configuration 
+
+```
+/etc/sudoers.d/90-cloud-init-users
+
+root@OpenTel-vm-02:/etc/sudoers.d# grep sudo /etc/group
+sudo:x:27:ubuntu,elk
+
+# User rules for ubuntu
+ubuntu ALL=(ALL) NOPASSWD:ALL
+
+# User rules for elk 
+elk ALL=(ALL) NOPASSWD:ALL
+```
+
+
+## Python virtual environment
+
+python --version 
+python3 --version 
+
+
+ubuntu@OpenTel-vm-03:~/OpenTel-POC$ python --version 
+
+Command 'python' not found, did you mean:
+
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+
+ubuntu@OpenTel-vm-03:~/OpenTel-POC$ python3 --version 
+Python 3.8.10
+
+- Make the directory for the virtual environment
+mkdir .opentel
+
+- Install the python virtual environment
+
+sudo apt install python3.8-venv
+
+python3 -m venv .opentel 
+
+  apt install python3.8-venv
+
+
+
+
+# GROCERY STORE
