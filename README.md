@@ -75,14 +75,6 @@ elk ALL=(ALL) NOPASSWD:ALL
 python --version 
 python3 --version 
 
-
-ubuntu@OpenTel-vm-03:~/OpenTel-POC$ python --version 
-
-Command 'python' not found, did you mean:
-
-  command 'python3' from deb python3
-  command 'python' from deb python-is-python3
-
 ubuntu@OpenTel-vm-03:~/OpenTel-POC$ python3 --version 
 Python 3.8.10
 
@@ -95,9 +87,16 @@ sudo apt install python3.8-venv
 
 python3 -m venv .opentel 
 
-  apt install python3.8-venv
+source ~/.opentel/bin/activate \r
 
+ubuntu@OpenTel-vm-02:~$ source ~/.opentel/bin/activate 
+(.opentel) ubuntu@OpenTel-vm-02:~$ pip list
+Package       Version
+------------- -------
+pip           20.0.2 
+pkg-resources 0.0.0  
+setuptools    44.0.0 
 
-
+deactivate \r
 
 # GROCERY STORE
