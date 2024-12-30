@@ -100,3 +100,73 @@ setuptools    44.0.0
 deactivate \r
 
 # GROCERY STORE
+
+## Docker compose commands
+
+Need to cd into Chapter 2
+
+~/OpenTel-POC/Cloud-Native-Observability/chapter02
+
+docker compose help
+
+
+ubuntu@OpenTel-vm-03:~/OpenTel-POC/Cloud-Native-Observability/chapter02$ docker compose up
+WARN[0000] /home/ubuntu/OpenTel-POC/Cloud-Native-Observability/chapter02/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 10/10
+ ✔ Network chapter02_cloud-native-observability  Created                                                                                       0.2s 
+ ✔ Container prometheus                          Created                                                                                       1.7s 
+ ✔ Container opentelemetry-collector             Created                                                                                       1.5s 
+ ✔ Container jaeger                              Created                                                                                       1.7s 
+ ✔ Container loki                                Created                                                                                       1.6s 
+ ✔ Container grafana                             Created                                                                                       1.6s 
+ ✔ Container promtail                            Created                                                                                       1.6s 
+ ✔ Container inventory                           Created                                                                                       0.7s 
+ ✔ Container grocery-store                       Created                                                                                       0.7s 
+ ✔ Container shopper                             Created                                                                                       0.5s 
+Attaching to grafana, grocery-store, inventory, jaeger, loki, opentelemetry-collector, prometheus, promtail, shopper
+
+
+
+
+ubuntu@OpenTel-vm-03:~$ docker compose ls
+NAME                STATUS              CONFIG FILES
+chapter02           running(9)          /home/ubuntu/OpenTel-POC/Cloud-Native-Observability/chapter02/docker-compose.yml
+
+
+
+docker compose stats
+
+CONTAINER ID   NAME                      CPU %     MEM USAGE / LIMIT    MEM %     NET I/O           BLOCK I/O        PIDS
+1bafa7d87c36   shopper                   0.86%     35.65MiB / 3.33GiB   1.05%     272kB / 605kB     20.3MB / 0B      8
+55533000d7db   grocery-store             3.88%     76.26MiB / 80MiB     95.32%    509kB / 783kB     24.5MB / 0B      17
+838a9340fe25   inventory                 3.48%     72.33MiB / 80MiB     90.42%    299kB / 468kB     33.2MB / 0B      17
+186f9eaaabcd   prometheus                0.00%     26.93MiB / 3.33GiB   0.79%     273kB / 58.2kB    59.2MB / 115kB   8
+586763016d43   jaeger                    0.09%     25.49MiB / 3.33GiB   0.75%     952kB / 2.96MB    31.8MB / 0B      6
+1cd01e77a426   grafana                   0.02%     35.51MiB / 3.33GiB   1.04%     12.7kB / 3.77kB   68.4MB / 365kB   11
+86117f7d5bac   promtail                  0.26%     23.43MiB / 3.33GiB   0.69%     8.47kB / 208kB    54.5MB / 156kB   8
+126cc2a77e22   loki                      0.12%     32.37MiB / 3.33GiB   0.95%     388kB / 36.7kB    51.7MB / 115kB   9
+d176718809b1   opentelemetry-collector   0.19%     35.69MiB / 3.33GiB   1.05%     1.07MB / 1.43MB   85.9MB / 0B      7
+
+docker compse logs
+
+
+opentelemetry-collector  | Value: 0.009000
+opentelemetry-collector  | 
+opentelemetry-collector  | 2024-12-30T23:23:20.004Z     INFO    loggingexporter/logging_exporter.go:54  MetricsExporter {"#metrics": 1}
+opentelemetry-collector  | 2024-12-30T23:23:20.005Z     DEBUG   loggingexporter/logging_exporter.go:64  ResourceMetrics #0
+opentelemetry-collector  | Resource SchemaURL: 
+opentelemetry-collector  | Resource labels:
+opentelemetry-collector  |      -> telemetry.sdk.language: STRING(python)
+opentelemetry-collector  |      -> telemetry.sdk.name: STRING(opentelemetry)
+opentelemetry-collector  |      -> telemetry.sdk.version: STRING(1.9.1)
+opentelemetry-collector  |      -> net.host.name: STRING(1bafa7d87c36)
+opentelemetry-collector  |      -> net.host.ip: STRING(172.18.0.10)
+opentelemetry-collector  |      -> service.name: STRING(shopper)
+
+
+
+
+
+
+## Jaeger
+http://grocerystore.programmingkitchen.com:16686/search
