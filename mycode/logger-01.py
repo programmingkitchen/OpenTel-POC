@@ -1,8 +1,12 @@
 #!/home/ubuntu/.opentel/bin/python
 '''
 https://github.com/open-telemetry/opentelemetry-python/issues/3664
+
+Can we generate logs without an emitter?
+
 '''
 import time
+import logging.config
 from opentelemetry.sdk._logs import LoggerProvider
 from opentelemetry.sdk._logs.export import ConsoleLogExporter, SimpleLogRecordProcessor
 from opentelemetry.sdk.resources import Resource
@@ -13,6 +17,26 @@ def configure_log_provider():
     myprovider = LoggerProvider(resource=Resource.create())
     myexporter = ConsoleLogExporter()
     myprovider.add_log_record_processor(SimpleLogRecordProcessor(myexporter))
+    return myprovider
+
+def configure_logging(logger_provider):
+    logging.config.dictConfig({
+    "version": 1,
+    "formatters": {
+        "simple": {"format": "%(name)s [%(module)s.%(lineno)s]: %(message)s"}
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "formatter": "simple",
+            "class": "opentelemetry.sdk._logs.LoggingHandler",
+            "logger_provider": logger_provider,
+        }
+    },
+    "loggers": {
+        "__main__": {"handlers": ["console"], "level": "INFO"},
+    }
+})
 
 def snooze(mytime):
     print("+Sleeping for: ", mytime)
@@ -48,6 +72,9 @@ if __name__ == "__main__":
     print("STARTING Log #1")
     print("========================================")
     browse()
+    myprovider = configure_log_provider()
+    configure_logging(myprovider)
+
 
     
 
