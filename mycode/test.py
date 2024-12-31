@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 from opentelemetry import context, trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
@@ -21,6 +22,10 @@ def process():
 def test():
     print("+Test()")
 
+def snooze(mytime):
+    print("+Sleeping for: ", mytime)
+    time.sleep(mytime)
+
 # Why is the context only attached to Span 1
 if __name__ == "__main__":
     tracer = configure_tracer()
@@ -32,6 +37,7 @@ if __name__ == "__main__":
     browse()
     process()
     browse()
+    snooze(15)
     span2.end()
     context.detach(token)
     span1.end()
