@@ -13,39 +13,47 @@ def configure_tracer():
     trace.set_tracer_provider(provider)
     return trace.get_tracer("trace-01.py", "0.0.1")
 
+tracer = configure_tracer()
+
+@tracer.start_as_current_span("snooze")
 def snooze(mytime):
     print("+Sleeping for: ", mytime)
     time.sleep(mytime)
 
+@tracer.start_as_current_span("browse")
 def browse():
      print("+login(): Browse to website.")
      snooze(10)
      list()
 
+@tracer.start_as_current_span("list")
 def list():
     print("+list(): List all items")
 
+@tracer.start_as_current_span("display by id")
 def display_by_id(id):
     print("+display_by_id(): Display item with ID number.")
 
+@tracer.start_as_current_span("add")
 def add(id):
     print("+add(id):  Add id", id)
+    print("+add {} to cart".format(id))
     list()
 
+@tracer.start_as_current_span("update")
 def update(id):
     print("+update():  Update item", id)
     list()
 
+@tracer.start_as_current_span("delete")
 def delete(id):
     print("+delete():  Delete item", id)
     list()
 
-tracer = configure_tracer()
-
 if __name__ == "__main__":
+    browse()
    
-    with tracer.start_as_current_span("Visit site"):
-        browse()
+    
 
 
 
