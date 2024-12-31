@@ -3,7 +3,7 @@
 import time
 from opentelemetry import trace
 from common import (
-    configure_logger,
+    #configure_logger,
     configure_tracer,
 )
 from local_machine_resource_detector import LocalMachineResourceDetector
