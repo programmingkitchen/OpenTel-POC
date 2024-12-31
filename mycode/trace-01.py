@@ -5,8 +5,6 @@ from opentelemetry import context, trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, BatchSpanProcessor
 
-tracer = configure_tracer()
-
 def configure_tracer():
     exporter = ConsoleSpanExporter()
     span_processor = BatchSpanProcessor(exporter)
@@ -42,7 +40,8 @@ def delete(id):
     print("+delete():  Delete item", id)
     list()
 
-# 
+tracer = configure_tracer()
+
 if __name__ == "__main__":
    
     with tracer.start_as_current_span("Visit site"):
