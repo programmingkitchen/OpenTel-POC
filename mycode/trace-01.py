@@ -70,6 +70,7 @@ def delete(id):
     print("+delete():  Delete item", id)
     list()
 
+# The calls below are not the parent (starts with the method call)
 if __name__ == "__main__":
     print("========================================")
     print("STARTING TRACE #1")
