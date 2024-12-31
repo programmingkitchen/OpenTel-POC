@@ -63,6 +63,7 @@ def update(id):
     print("+update():  Update item", id)
     span = trace.get_current_span()
     span.set_attribute("http.method", "POST")
+    snooze(5)
 
 @tracer.start_as_current_span("delete")
 def delete(id):
