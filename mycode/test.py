@@ -18,7 +18,7 @@ def browse():
 def process():
     print("+Process()")
 
-def Test():
+def test():
     print("+Test()")
 
 # Why is the context only attached to Span 1
