@@ -15,8 +15,18 @@ def configure_tracer():
 def browse():
     print("+Browse(): call browse (rjg)")
 
+def process():
+    print("+Process() (rjg)")
+
 if __name__ == "__main__":
     tracer = configure_tracer()
-    span = tracer.start_span("SPAN NAME (rjg)")
+    span = tracer.start_span("SPAN #1 (rjg)")
     browse()
+    process()
     span.end()
+
+    span = tracer.start_span("SPAN #2 (rjg)")
+    process()
+    span.end()
+
+
