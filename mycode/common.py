@@ -6,13 +6,13 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExport
 from opentelemetry.semconv.resource import ResourceAttributes
 from opentelemetry.semconv.trace import SpanAttributes
 from local_machine_resource_detector import LocalMachineResourceDetector
-""" import logging
+import logging
 from opentelemetry.sdk._logs.export import ConsoleLogExporter, BatchLogProcessor
 from opentelemetry.sdk._logs import (
     LogEmitterProvider,
     OTLPHandler,
     set_log_emitter_provider,
-) """
+)
 
 
 """ def configure_logger(name, version):
