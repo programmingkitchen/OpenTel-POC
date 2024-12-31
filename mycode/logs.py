@@ -1,6 +1,7 @@
 import logging
 import time
-from opentelemetry.sdk._logs.export import ConsoleLogExporter, BatchLogProcessor
+# from opentelemetry.sdk._logs.export import ConsoleLogExporter, BatchLogProcessor
+from opentelemetry.sdk._logs.export import ConsoleLogExporter, BatchLogRecordProcessor
 from opentelemetry.sdk._logs import (
     LogEmitterProvider,
     LogRecord,
