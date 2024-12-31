@@ -1,5 +1,7 @@
 #!/home/ubuntu/.opentel/bin/python
-
+'''
+https://github.com/open-telemetry/opentelemetry-python/issues/3664
+'''
 import time
 from opentelemetry.sdk._logs import LoggerProvider
 from opentelemetry.sdk._logs.export import ConsoleLogExporter, SimpleLogRecordProcessor
