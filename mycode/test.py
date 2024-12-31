@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from opentelemetry import trace
+from opentelemetry import context, trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
 
@@ -20,10 +20,10 @@ def process():
 
 if __name__ == "__main__":
     tracer = configure_tracer()
-    span1 = tracer.start_span("SPAN #1 (rjg)")
+    span1 = tracer.start_span("SPAN #1")
     ctx = trace.set_span_in_context(span1)
     token = context.attach(ctx)
-    span2 = tracer.start_span("SPAN #2 (rjg)")
+    span2 = tracer.start_span("SPAN #2")
     browse()
     process()
     span2.end()
