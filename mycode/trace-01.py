@@ -9,18 +9,18 @@ from opentelemetry.sdk.trace.export import ConsoleSpanExporter, BatchSpanProcess
 def configure_tracer(name, version):
     exporter = ConsoleSpanExporter()
     span_processor = BatchSpanProcessor(exporter)
-    resource = Resource.create(
+    myresource = Resource.create(
         {
             "service.name": name,
             "service.version": version,
         }
     )
-    provider = TracerProvider()
+    provider = TracerProvider(resource=myresource)
     provider.add_span_processor(span_processor)
     trace.set_tracer_provider(provider)
     return trace.get_tracer(name, version)
 
-tracer = configure_tracer("tracer-01.py", "0.0.1")
+tracer = configure_tracer("mytracer", "0.0.1")
 
 @tracer.start_as_current_span("snooze")
 def snooze(mytime):
