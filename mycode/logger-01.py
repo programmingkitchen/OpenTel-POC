@@ -2,11 +2,12 @@
 
 import time
 from opentelemetry.sdk._logs import LoggerProvider
+from opentelemetry.sdk._logs.export import ConsoleLogExporter, SimpleLogRecordProcessor
 from opentelemetry.sdk.resources import Resource
 
 def configure_log_emitter_provider():
-    provider = LogEmitterProvider(resource=Resource.create())
-    set_log_emitter_provider(provider)
+    myprovider = LoggerProvider(resource=Resource.create())
+    myprovider.add_log_record_processor(SimpleLogRecordProcessor(ConsoleLogExporter()))
 
 def snooze(mytime):
     print("+Sleeping for: ", mytime)
