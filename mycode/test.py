@@ -17,6 +17,6 @@ def browse():
 
 if __name__ == "__main__":
     tracer = configure_tracer()
-    span = tracer.start_span("This is the name of the span (rjg)")
+    span = tracer.start_span("SPAN NAME (rjg)")
     browse()
     span.end()
