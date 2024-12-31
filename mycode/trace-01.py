@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/home/ubuntu/.opentel/bin/python
 
 import time
 from opentelemetry import context, trace
-from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.resources import Resource, ResourceDetector
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, BatchSpanProcessor
 
@@ -13,6 +13,8 @@ def configure_tracer(name, version):
         {
             "service.name": name,
             "service.version": version,
+            "net.host.name": hostname,
+            "net.host.ip": ip_address,
         }
     )
     provider = TracerProvider(resource=myresource)
