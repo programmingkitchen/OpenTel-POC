@@ -20,11 +20,16 @@ def snooze(mytime):
     print("+Sleeping for: ", mytime)
     time.sleep(mytime)
 
+@tracer.start_as_current_span("process")
+def process():
+    print("+Processing")
+
 @tracer.start_as_current_span("browse")
 def browse():
-     print("+login(): Browse to website.")
+     print("+browse(): Browse to website.")
      snooze(10)
      list()
+     process()
 
 @tracer.start_as_current_span("list")
 def list():
@@ -52,6 +57,8 @@ def delete(id):
 
 if __name__ == "__main__":
     browse()
+
+    # This will start a new trace
     update(100)
    
     
