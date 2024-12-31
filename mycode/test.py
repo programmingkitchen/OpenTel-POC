@@ -13,20 +13,21 @@ def configure_tracer():
     return trace.get_tracer("test.py", "0.0.1")
 
 def browse():
-    print("+Browse(): call browse (rjg)")
+    print("+Browse(): (rjg)")
 
 def process():
     print("+Process() (rjg)")
 
 if __name__ == "__main__":
     tracer = configure_tracer()
-    span = tracer.start_span("SPAN #1 (rjg)")
+    span1 = tracer.start_span("SPAN #1 (rjg)")
+    ctx = trace.set_span_in_context(span1)
+    token = context.attach(ctx)
+    span2 = tracer.start_span("SPAN #2 (rjg)")
     browse()
     process()
-    span.end()
-
-    span = tracer.start_span("SPAN #2 (rjg)")
-    process()
-    span.end()
+    span2.end()
+    context.detach(token)
+    span1.end()
 
 
