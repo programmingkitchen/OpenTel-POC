@@ -1,7 +1,7 @@
 #!/home/ubuntu/.opentel/bin/python
 
 import time
-from opentelemetry.sdk._logs import LogEmitterProvider, set_log_emitter_provider
+from opentelemetry.sdk._logs import LoggerProvider
 from opentelemetry.sdk.resources import Resource
 
 def configure_log_emitter_provider():
