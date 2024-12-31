@@ -12,5 +12,11 @@ def configure_tracer():
     trace.set_tracer_provider(provider)
     return trace.get_tracer("test.py", "0.0.1")
 
+def browse():
+    print("Test tracker (rjg)")
+
 if __name__ == "__main__":
     tracer = configure_tracer()
+    span = tracer.start_span("Start span")
+    browse()
+    span.end()
