@@ -37,10 +37,12 @@ def process():
 
 @tracer.start_as_current_span("browse")
 def browse():
-     print("+browse(): Browse to website.")
-     snooze(10)
-     list()
-     process()
+    print("+browse(): Browse to website.")
+    span = trace.get_current_span()
+    span.set_attribute("http.method", "GET")
+    snooze(10)
+    list()
+    process()
 
 @tracer.start_as_current_span("list")
 def list():
@@ -59,7 +61,8 @@ def add(id):
 @tracer.start_as_current_span("update")
 def update(id):
     print("+update():  Update item", id)
-    list()
+    span = trace.get_current_span()
+    span.set_attribute("http.method", "POST")
 
 @tracer.start_as_current_span("delete")
 def delete(id):
