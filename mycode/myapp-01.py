@@ -1,32 +1,12 @@
 #!/home/ubuntu/.opentel/bin/python
 
 import time
-from opentelemetry import context, trace
-from opentelemetry.sdk.resources import Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import ConsoleSpanExporter, BatchSpanProcessor
-# from local_machine_resource_detector import LocalMachineResourceDetector
+from opentelemetry import trace
 from common import (
+    configure_logger,
     configure_tracer,
 )
-
-
-""" def configure_tracer(name, version):
-    exporter = ConsoleSpanExporter()
-    span_processor = BatchSpanProcessor(exporter)
-    local_resource = LocalMachineResourceDetector().detect()
-    myresource = local_resource.merge(
-        Resource.create(
-            {
-                "service.name": name,
-                "service.version": version,
-            }
-        )
-    )
-    provider = TracerProvider(resource=myresource)
-    provider.add_span_processor(span_processor)
-    trace.set_tracer_provider(provider)
-    return trace.get_tracer(name, version) """
+from local_machine_resource_detector import LocalMachineResourceDetector
 
 tracer = configure_tracer("mytracer", "0.0.1")
 # logger = configure_logger("grocery-store", "0.1.2")
