@@ -9,7 +9,7 @@ from common import (
 from local_machine_resource_detector import LocalMachineResourceDetector
 
 tracer = configure_tracer("mytracer", "0.0.1")
-# logger = configure_logger("grocery-store", "0.1.2")
+logger = configure_logger("mylogger", "0.1.2")
 
 @tracer.start_as_current_span("snooze")
 def snooze(mytime):
