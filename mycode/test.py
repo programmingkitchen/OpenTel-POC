@@ -13,10 +13,10 @@ def configure_tracer():
     return trace.get_tracer("test.py", "0.0.1")
 
 def browse():
-    print("Test tracker (rjg)")
+    print("+Browse(): call browse (rjg)")
 
 if __name__ == "__main__":
     tracer = configure_tracer()
-    span = tracer.start_span("Start span")
+    span = tracer.start_span("This is the name of the span (rjg)")
     browse()
     span.end()
