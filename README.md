@@ -100,14 +100,52 @@ setuptools    44.0.0
 deactivate \r
 
 
+
+
 ## Open Tel Packages
 
 pip install flask requests
+
+(.opentel) ubuntu@OpenTel-vm-01:~$ pip list
+Package            Version   
+------------------ ----------
+blinker            1.8.2     
+certifi            2024.12.14
+charset-normalizer 3.4.1     
+click              8.1.8     
+flask              3.0.3     
+idna               3.10      
+importlib-metadata 8.5.0     
+itsdangerous       2.2.0     
+jinja2             3.1.5     
+MarkupSafe         2.1.5     
+pip                20.0.2    
+pkg-resources      0.0.0     
+requests           2.32.3    
+setuptools         44.0.0    
+urllib3            2.2.3     
+werkzeug           3.0.6     
+zipp               3.20.2    
+(.opentel) ubuntu@OpenTel-vm-01:~$ 
+
+
+
 pip install opentelemetry-api opentelemetry-sdk
 
 
 pip freeze | grep opentelemetry
 
+(.opentel) ubuntu@OpenTel-vm-01:~$ pip freeze | grep opentelemetry
+opentelemetry-api==1.29.0
+opentelemetry-sdk==1.29.0
+opentelemetry-semantic-conventions==0.50b0
+(.opentel) ubuntu@OpenTel-vm-01:~$ 
+
+
+## Test Run
+
+(.opentel) ubuntu@OpenTel-vm-01:~/OpenTel-POC/mycode$ python3 test.py 
+(.opentel) ubuntu@OpenTel-vm-01:~/OpenTel-POC/mycode$ 
 
 
 
