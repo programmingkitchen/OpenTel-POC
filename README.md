@@ -99,6 +99,21 @@ setuptools    44.0.0
 
 deactivate \r
 
+
+## Open Tel Packages
+
+pip install flask requests
+pip install opentelemetry-api opentelemetry-sdk
+
+
+pip freeze | grep opentelemetry
+
+
+
+
+
+
+
 # GROCERY STORE
 
 ## Docker compose commands
