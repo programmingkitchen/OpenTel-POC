@@ -74,7 +74,7 @@ if __name__ == "__main__":
     browse()
     myprovider = configure_log_provider()
     configure_logging(myprovider)
-    logging.getLogger().info("Test Log")
+    logging.getLogger("__main__").info("Test Log")
 
 
     
