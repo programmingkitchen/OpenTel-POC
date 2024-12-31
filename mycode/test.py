@@ -47,7 +47,8 @@ if __name__ == "__main__":
     span1.end()
 
     span3 = tracer.start_span("SPAN #3")
+    print("========================================")
     snooze(15)
-    span3.end
+    span3.end()
 
 
