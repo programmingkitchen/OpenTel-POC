@@ -63,9 +63,15 @@ def delete(id):
     list()
 
 if __name__ == "__main__":
+    print("========================================")
+    print("STARTING TRACE #1")
+    print("========================================")
     browse()
 
     # This will start a new trace
+    print("========================================")
+    print("STARTING TRACE #2")
+    print("========================================")
     update(100)
    
     
