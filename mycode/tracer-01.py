@@ -1,7 +1,7 @@
 #!/home/ubuntu/.opentel/bin/python
 
 import time
-from opentelemetry import trace
+#from opentelemetry import trace
 from common_tracer import (
     configure_tracer,
 )
