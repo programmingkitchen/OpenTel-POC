@@ -13,19 +13,25 @@ def configure_tracer():
     return trace.get_tracer("test.py", "0.0.1")
 
 def browse():
-    print("+Browse(): (rjg)")
+    print("+Browse()")
 
 def process():
-    print("+Process() (rjg)")
+    print("+Process()")
 
+def Test():
+    print("+Test()")
+
+# Why is the context only attached to Span 1
 if __name__ == "__main__":
     tracer = configure_tracer()
     span1 = tracer.start_span("SPAN #1")
+    test()
     ctx = trace.set_span_in_context(span1)
     token = context.attach(ctx)
     span2 = tracer.start_span("SPAN #2")
     browse()
     process()
+    browse()
     span2.end()
     context.detach(token)
     span1.end()
