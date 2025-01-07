@@ -81,6 +81,12 @@ opentelemetry-semantic-conventions 0.50b0
 opentelemetry-util-http            0.50b0   
 
 
+## Prometheus
+ubuntu@OpenTel-vm-01:~$ netstat -an | grep 8000
+tcp        0      0 127.0.0.1:8000          0.0.0.0:*               LISTEN     
+
+
+
 
 ## Produce load
 
