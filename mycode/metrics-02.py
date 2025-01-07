@@ -17,7 +17,7 @@ def configure_meter_provider():
     # reader = PeriodicExportingMetricReader(exporter, export_interval_millis=5000)
     provider = MeterProvider(
         #metric_readers=[reader],
-        metric_readers=[promettheus_reader],
+        metric_readers=[prometheus_reader],
         resource=Resource.create())
     set_meter_provider(provider)
 
