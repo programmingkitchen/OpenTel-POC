@@ -65,4 +65,23 @@ wrapt                              1.17.0
 zipp                               3.20.2    
 
 
+# Metrics
+
+pip install opentelemetry-exporter-prometheus
+
+
+(.opentel) ubuntu@OpenTel-vm-01:~/OpenTel-POC$ pip list | grep opentelemetry
+opentelemetry-api                  1.29.0    
+opentelemetry-exporter-prometheus  0.50b0    
+opentelemetry-instrumentation      0.50b0    
+opentelemetry-instrumentation-wsgi 0.50b0    
+opentelemetry-propagator-b3        1.29.0    
+opentelemetry-sdk                  1.29.0    
+opentelemetry-semantic-conventions 0.50b0    
+opentelemetry-util-http            0.50b0   
+
+
+
+## Produce load
+
 
