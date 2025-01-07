@@ -9,6 +9,8 @@ from opentelemetry.exporter.prometheus import PrometheusMetricReader
 from prometheus_client import start_http_server
 
 def configure_meter_provider():
+    #start_http_server(port=8000, addr="localhost")
+    #reader = PrometheusMetricReader(prefix="MetricExampleRJG")
     exporter = ConsoleMetricExporter()
     reader = PeriodicExportingMetricReader(exporter, export_interval_millis=5000)
     provider = MeterProvider(
@@ -17,8 +19,6 @@ def configure_meter_provider():
     set_meter_provider(provider)
 
 if __name__ == "__main__":
-    start_http_server(port=8000, addr="localhost")
-    reader = PrometheusMetricReader(prefix="MetricExampleRJG")
     configure_meter_provider()
     meter = get_meter_provider().get_meter(
         name="metric-example",
