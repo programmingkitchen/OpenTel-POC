@@ -10,11 +10,14 @@ from prometheus_client import start_http_server
 
 def configure_meter_provider():
     start_http_server(port=8000, addr="localhost")
-    reader = PrometheusMetricReader(prefix="MetricExampleRJG")
+    prometheus_reader = PrometheusMetricReader(
+        prefix="MetricExampleRJG",
+    )
     exporter = ConsoleMetricExporter()
     # reader = PeriodicExportingMetricReader(exporter, export_interval_millis=5000)
     provider = MeterProvider(
-        metric_readers=[reader],
+        #metric_readers=[reader],
+        metric_readers=[promettheus_reader],
         resource=Resource.create())
     set_meter_provider(provider)
 
